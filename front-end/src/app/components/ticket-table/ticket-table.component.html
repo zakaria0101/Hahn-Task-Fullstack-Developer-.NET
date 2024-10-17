@@ -1,0 +1,66 @@
+<!-- <div class="flex justify-center items-center min-h-screen"> -->
+<div class="container mx-auto p-4">
+    <h1 class="text-3xl font-semibold text-center my-4 mt-0">Ticket Management 🎫</h1>
+
+    <div class="overflow-x-auto">
+        <table class="min-w-full bg-gray-100 border border-gray-200  overflow-hidden">
+            <thead class=" bg-green-600 text-white">
+                <tr>
+                    <th class="px-2 py-2 border text-left text-sm font-medium" (click)="sortTickets('ticket_ID')">Ticket
+                        Id <span *ngIf="sortColumn === 'ticket_ID'">{{ sortOrder === 'asc' ? '↑' : '↓' }}</span>
+                    </th>
+                    <th class="px-2 py-2 border text-left text-sm font-medium">
+                        Description
+                        <input type="text" placeholder="Filter" [(ngModel)]="searchTerm" (input)="filterTickets()"
+                            class="border border-gray-300 p-1 rounded ml-2 text-black" />
+                    </th>
+                    <th class="px-2 py-2 border text-left text-sm font-medium" (click)="sortTickets('status')">
+                        Status <span *ngIf="sortColumn === 'status'">{{ sortOrder === 'asc' ? '↑' : '↓' }}</span>
+                    </th>
+                    <th class="px-2 py-2 border text-left text-sm font-medium" (click)="sortTickets('date')">
+                        Date <span *ngIf="sortColumn === 'date'"> {{ sortOrder === 'asc' ? '↑' : '↓' }}</span>
+                    </th>
+                    <th class="px-2 py-2 border text-left text-sm font-medium">Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let ticket of filteredTickets "
+                    class=" border-b border-gray-200 hover:bg-white transition-colors duration-200 ">
+                    <td class="border-b border-r border-gray-300 px-2 py-1 text-sm text-black font-semibold">
+                        {{ticket.ticket_ID}}</td>
+                    <td class="border-b border-r border-gray-300 px-2 py-1 text-sm text-black font-semibold">
+                        {{ticket.description}}</td>
+                    <td class="border-b border-r border-gray-300 px-2 py-1 text-sm text-black font-semibold">
+                        {{ticket.status}}</td>
+                    <td class="border-b border-r border-gray-300 px-2 py-1 text-sm text-black font-semibold">
+                        {{ticket.date | date :'MMMM-dd-yyyy'}}</td>
+                    <td class="border-b border-r border-gray-300 px-2 py-1 text-sm text-black font-semibold">
+                        <button class="text-blue-600 hover:text-blue-800 underline"
+                            (click)="editTicket(ticket.ticket_ID)">Update</button>
+                        &nbsp;
+                        <button class="text-blue-600 hover:text-blue-800 underline"
+                            (click)="openConfirmationDialog(ticket.ticket_ID)">Delete</button>
+                    </td>
+                </tr>
+                <tr class="">
+                    <td colspan="1" class=" py-2 px-2">
+                        <button (click)="addTicket()"
+                            class="bg-green-600 text-white text-xs px-4 font-semibold py-2 rounded  hover:bg-green-700 transition-colors duration-200">
+                            Add New
+                        </button>
+                    </td>
+                </tr>
+                <tr *ngIf="tickets.length === 0">
+                    <td colspan="5" class="text-center py-4">No tickets available</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    <div *ngIf="showModal" class="fixed inset-0 flex items-center justify-center z-50 bg-black bg-opacity-50">
+        <app-ticket-form [ticket]="currentTicket" (close)="closeModal()">
+        </app-ticket-form>
+    </div>
+    <app-confirmation-dialog *ngIf="showConfirmationDialog" (confirmDelete)="confirmDelete()"
+        (cancelDelete)="closeConfirmationDialog()"></app-confirmation-dialog>
+
+</div>
