@@ -6,6 +6,12 @@ Task – Fullstack Developer .NET
 
 This project is a Ticket Management System that allows users to manage tickets through a web interface. The application supports CRUD (Create, Read, Update, Delete) operations for managing tickets and includes additional features such as pagination, sorting, and filtering.
 
+
+
+https://github.com/user-attachments/assets/5c905bcd-7254-4507-bbfe-e96f8907e48a
+
+
+
 ## Table of Contents
 
 - [Technologies Used](#technologies-used)
@@ -16,8 +22,6 @@ This project is a Ticket Management System that allows users to manage tickets t
 - [Running the Application](#running-the-application)
 - [API Endpoints](#api-endpoints)
 - [Project Structure](#project-structure)
-- [Usage](#usage)
-- [Screenshots](#screenshots)
 
 ## Technologies Used
 
