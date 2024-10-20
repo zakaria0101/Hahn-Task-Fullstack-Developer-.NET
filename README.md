@@ -115,7 +115,7 @@ https://github.com/user-attachments/assets/5c905bcd-7254-4507-bbfe-e96f8907e48a
 - **POST `/api/ticket`**: Create a new ticket.  
 - **GET `/api/ticket/{id}`**: Fetch a ticket by ID.  
 - **PUT `/api/ticket/{id}`**: Update a ticket by ID.  
-- **DELETE `/api/tickets/{id}`**: Delete a ticket by ID.
+- **DELETE `/api/ticket/{id}`**: Delete a ticket by ID.
 
 ## Project Structure
 
